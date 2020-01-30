@@ -1,6 +1,6 @@
 import * as assert from 'assert';
 import 'mocha';
-import {cleanMatch, cleanSrc} from '../dist';
+import {cleanMatch, cleanSrc} from '..';
 import * as fg from 'fast-glob';
 
 const temp = require('temp');
