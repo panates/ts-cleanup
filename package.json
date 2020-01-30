@@ -52,16 +52,16 @@
     "url": "https://github.com/panates/ts-cleanup.git"
   },
   "scripts": {
-    "test": "mocha -r ts-node/register --reporter spec src/**/*.spec.ts",
+    "test": "mocha -r ts-node/register --reporter spec test/**/*.spec.ts",
     "cover": "nyc --reporter=cobertura --reporter html --reporter text npm run test",
     "travis-cover": "nyc --reporter lcovonly npm run test",
     "clean": "tsc && npm run clean:test && npm run clean:src",
     "clean:src": "node ./dist/bin -s src -d dist",
-    "clean:test": "node ./dist/bin -s test",
+    "clean:test": "node ./dist/bin -s test -k",
     "build": "npm run clean && npm run lint && tsc",
     "lint": "npm run lint:src && npm run lint:spec",
     "lint:src": "tslint -p tsconfig.json \"src/**/*.ts\" --fix",
-    "lint:spec": "tslint -p tsconfig.spec.json \"src/**/*.spec.ts\" --fix"
+    "lint:spec": "tslint -p tsconfig.spec.json \"test/**/*.spec.ts\" --fix"
   },
   "bugs": {
     "url": "https://github.com/panates/ts-cleanup.git/issues"
