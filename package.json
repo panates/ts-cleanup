@@ -1,0 +1,72 @@
+{
+  "name": "ts-cleanup",
+  "version": "0.0.1",
+  "description": "A tool for cleaning up files built by typeScript",
+  "keywords": [
+    "ts",
+    "typescript",
+    "clean",
+    "cleanup",
+    "tidy"
+  ],
+  "author": "Panates <info@panates.com>",
+  "license": "UNLICENSED",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "./dist"
+  },
+  "bin": {
+    "ts-cleanup": "dist/bin.js"
+  },
+  "dependencies": {
+    "commander": "^4.1.0",
+    "fast-glob": "^3.1.1",
+    "colors": "^1.4.0",
+    "chokidar": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.7",
+    "@types/commander": "^2.12.2",
+    "@types/mocha": "^5.2.7",
+    "@types/colors": "^1.2.1",
+    "@types/chokidar": "^2.1.3",
+    "mocha": "^7.0.0",
+    "nyc": "^14.1.1",
+    "typescript": "^3.7.5",
+    "ts-loader": "^6.1.1",
+    "ts-node": "^8.6.2",
+    "tslint": "^5.20.0",
+    "temp": "^0.9.1"
+  },
+  "files": [
+    "LICENSE",
+    "README",
+    "dist/"
+  ],
+  "engines": {
+    "node": ">= 8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/panates/ts-cleanup.git"
+  },
+  "scripts": {
+    "test": "mocha -r ts-node/register --reporter spec src/**/*.spec.ts",
+    "cover": "nyc --reporter=cobertura --reporter html --reporter text npm run test",
+    "travis-cover": "nyc --reporter lcovonly npm run test",
+    "clean": "tsc && npm run clean:test && npm run clean:src",
+    "clean:src": "node ./dist/bin -s src -d dist",
+    "clean:test": "node ./dist/bin -s test",
+    "build": "npm run clean && npm run lint && tsc",
+    "lint": "npm run lint:src && npm run lint:spec",
+    "lint:src": "tslint -p tsconfig.json \"src/**/*.ts\" --fix",
+    "lint:spec": "tslint -p tsconfig.spec.json \"src/**/*.spec.ts\" --fix"
+  },
+  "bugs": {
+    "url": "https://github.com/panates/ts-cleanup.git/issues"
+  },
+  "nyc": {
+    "temp-dir": "./coverage/.nyc_output"
+  }
+}
