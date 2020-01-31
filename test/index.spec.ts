@@ -46,25 +46,7 @@ describe('ts-cleanup', () => {
 
     describe('cleanSrc()', () => {
 
-        it('should remove files only if a ts/tsx file exists', () => {
-            tempDir = createTempTree({
-                src: {
-                    'index.ts': '',
-                    'index.js': '',
-                    'index.js.map': '',
-                    'index.d.ts': '',
-                    'main.js': '',
-                    'main.tsx': '',
-                    'other.js': '',
-                    'readme.md': ''
-                }
-            });
-            cleanSrc({root: tempDir});
-            const files = fg.sync('**/*', {cwd: tempDir});
-            assert.deepStrictEqual(files, ['src/index.ts', 'src/main.tsx', 'src/readme.md']);
-        });
-
-        it('should keep files if keepJsFilesWithoutTS set', () => {
+        it('should remove only files if a ts/tsx file exists', () => {
             tempDir = createTempTree({
                 src: {
                     'index.ts': '',
@@ -78,13 +60,33 @@ describe('ts-cleanup', () => {
                     'other.d.ts': ''
                 }
             });
-            cleanSrc({root: tempDir, keepJsFilesWithoutTS: true});
+            cleanSrc({root: tempDir});
             const files = fg.sync('**/*', {cwd: tempDir});
             assert.deepStrictEqual(files, [
                 'src/index.ts',
                 'src/main.tsx',
                 'src/other.d.ts', 'src/other.js', 'src/other.js.map']);
         });
+
+        it('should remove files only if a ts/tsx file exists', () => {
+            tempDir = createTempTree({
+                src: {
+                    'index.ts': '',
+                    'index.js': '',
+                    'index.js.map': '',
+                    'index.d.ts': '',
+                    'main.js': '',
+                    'main.tsx': '',
+                    'other.js': '',
+                    'readme.md': ''
+                }
+            });
+            cleanSrc({root: tempDir, removeAllJsFiles: true});
+            const files = fg.sync('**/*', {cwd: tempDir});
+            assert.deepStrictEqual(files, ['src/index.ts', 'src/main.tsx', 'src/readme.md']);
+        });
+
+
 
         it('should exclude files matching glob pattern', () => {
             tempDir = createTempTree({

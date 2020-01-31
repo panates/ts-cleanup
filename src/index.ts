@@ -14,7 +14,7 @@ export interface ICleanupOptions {
 }
 
 export interface ICleanSrcOptions extends ICleanupOptions {
-    keepJsFilesWithoutTS?: boolean;
+    removeAllJsFiles?: boolean;
 }
 
 export interface IWatchOptions {
@@ -29,7 +29,7 @@ export function cleanup(src: string, dist: string, options: ICleanSrcOptions = {
     if (src) {
         cleanSrc({
             root: src,
-            keepJsFilesWithoutTS: options.keepJsFilesWithoutTS,
+            removeAllJsFiles: options.removeAllJsFiles,
             removeEmptyDirs: options.removeEmptyDirs,
             verbose: options.verbose
         });
@@ -100,7 +100,7 @@ export function cleanSrc(options: ICleanSrcOptions, callback?: CleanCallback) {
 
     _glob(root, ['**/*.js'], (f) => {
         const base = f.substring(0, f.length - 3);
-        if (options.keepJsFilesWithoutTS &&
+        if (!options.removeAllJsFiles &&
             !(fs.existsSync(base + '.ts') || fs.existsSync(base + '.tsx')))
             return;
         removeFile(f);

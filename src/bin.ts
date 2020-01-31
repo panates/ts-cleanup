@@ -15,7 +15,7 @@ program
     .option('-d, --dist <distDir>', 'sets the distribution folder with js files  (required if -s not defined)')
     .option('-v, --verbose', 'whether to show messages for files being deleted (disabled by default)')
     .option('-w, --watch', 'whether to watch for files being deleted (disabled by default)')
-    .option('-k, --keep', 'whether to keep .js files without a .ts file')
+    .option('-a, --all', 'whether to remove all .js,.js.map,d.ts files without a .ts file')
     .option('-rd, --remove-dirs', 'whether to remove empty directories', true)
     .version(pkg.version, '-V, --version', 'output the current version')
     .parse(process.argv);
@@ -39,7 +39,7 @@ function run() {
 
     cleanup(opts.src, opts.dist, {
         root: opts.src,
-        keepJsFilesWithoutTS: opts.keep,
+        removeAllJsFiles: opts.all,
         removeEmptyDirs: opts.removeDirs,
         verbose: opts.verbose
     });
