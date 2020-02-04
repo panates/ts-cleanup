@@ -121,7 +121,7 @@ export function cleanSrc(options: ICleanSrcOptions, callback?: CleanCallback) {
 
 function _glob(cwd: string, pattern: string | string[],
                callback: (f: string) => void,
-               exclude?: string | string[],) {
+               exclude?: string | string[], ) {
     const files = fg.sync(pattern,
         {
             cwd,
