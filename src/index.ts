@@ -25,25 +25,25 @@ export interface IWatchOptions {
 const EXTENSIONS = ['.js', '.js.map', '.d.ts'];
 const MATCH_TS_PATTERN = /^(.*)\.ts$/;
 
-export function cleanup(src: string, dist: string, options: ICleanSrcOptions = {}) {
+export function cleanup(src: string, dist: string, options: ICleanSrcOptions = {}, callback?: CleanCallback) {
     if (src) {
         cleanSrc({
             root: options.root ? path.resolve(options.root, src) : src,
             removeAllJsFiles: options.removeAllJsFiles,
             removeEmptyDirs: options.removeEmptyDirs,
             verbose: options.verbose
-        });
+        }, callback);
     }
     if (dist) {
         cleanMatch('./**/*.{js,js.map,d.ts}', {
-            root:  options.root ? path.resolve(options.root, dist) : dist,
+            root: options.root ? path.resolve(options.root, dist) : dist,
             removeEmptyDirs: options.removeEmptyDirs,
             verbose: options.verbose
-        });
+        }, callback);
     }
 }
 
-export function watch(src: string, dist: string, options: IWatchOptions = {}) {
+export function watch(src: string, dist: string, options: IWatchOptions = {}, callback?: CleanCallback) {
     chokidar
         .watch(src, {
             persistent: true,
@@ -56,7 +56,7 @@ export function watch(src: string, dist: string, options: IWatchOptions = {}) {
                 const base = path.resolve(dist, match[1]);
                 for (const ext of EXTENSIONS) {
                     const f = base + ext;
-                    if (fs.existsSync(f)) {
+                    if (fs.existsSync(f) && (!callback || callback(f))) {
                         fs.unlinkSync(f);
                         if (options.verbose)
                             console.log(`Removed "${colors.yellow(f)}"`);
@@ -121,7 +121,7 @@ export function cleanSrc(options: ICleanSrcOptions, callback?: CleanCallback) {
 
 function _glob(cwd: string, pattern: string | string[],
                callback: (f: string) => void,
-               exclude?: string | string[], ) {
+               exclude?: string | string[],) {
     const files = fg.sync(pattern,
         {
             cwd,
