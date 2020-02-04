@@ -28,7 +28,7 @@ const MATCH_TS_PATTERN = /^(.*)\.ts$/;
 export function cleanup(src: string, dist: string, options: ICleanSrcOptions = {}) {
     if (src) {
         cleanSrc({
-            root: src,
+            root: options.root ? path.resolve(options.root, src): src,
             removeAllJsFiles: options.removeAllJsFiles,
             removeEmptyDirs: options.removeEmptyDirs,
             verbose: options.verbose
@@ -36,7 +36,7 @@ export function cleanup(src: string, dist: string, options: ICleanSrcOptions = {
     }
     if (dist) {
         cleanMatch('./**/*.{js,js.map,d.ts}', {
-            root: dist,
+            root:  options.root ? path.resolve(options.root, dist): dist,
             removeEmptyDirs: options.removeEmptyDirs,
             verbose: options.verbose
         });
