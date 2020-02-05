@@ -10,7 +10,7 @@
     "tidy"
   ],
   "author": "Panates <info@panates.com>",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "directories": {
