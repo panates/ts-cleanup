@@ -140,11 +140,11 @@ cleanMatch('src/**/*.spec.{js,js.map,d.ts}', {
 
 [npm-image]: https://img.shields.io/npm/v/ts-cleanup.svg
 [npm-url]: https://npmjs.org/package/ts-cleanup
-[travis-image]: https://img.shields.io/travis/ramljs/ts-cleanup/master.svg
-[travis-url]: https://travis-ci.org/ramljs/ts-cleanup
-[coveralls-image]: https://img.shields.io/coveralls/ramljs/ts-cleanup/master.svg
-[coveralls-url]: https://coveralls.io/r/ramljs/ts-cleanup
+[travis-image]: https://img.shields.io/travis/panates/ts-cleanup/master.svg
+[travis-url]: https://travis-ci.org/panates/ts-cleanup
+[coveralls-image]: https://img.shields.io/coveralls/panates/ts-cleanup/master.svg
+[coveralls-url]: https://coveralls.io/r/panates/ts-cleanup
 [downloads-image]: https://img.shields.io/npm/dm/ts-cleanup.svg
 [downloads-url]: https://npmjs.org/package/ts-cleanup
-[devdependencies-image]: https://david-dm.org/ramljs/ts-cleanup/dev-status.svg
-[devdependencies-url]:https://david-dm.org/ramljs/ts-cleanup?type=dev
+[devdependencies-image]: https://david-dm.org/panates/ts-cleanup/dev-status.svg
+[devdependencies-url]:https://david-dm.org/panates/ts-cleanup?type=dev
