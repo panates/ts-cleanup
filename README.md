@@ -24,7 +24,7 @@ Options:
   -d, --dist <distDir>  sets the distribution folder with js files  (required if -s not defined)
   -v, --verbose         whether to show messages for files being deleted (disabled by default)
   -w, --watch           whether to watch for files being deleted (disabled by default)
-  -k, --keep            whether to keep .js files without a .ts file
+  -a, --all             whether to remove all .js files
   -rd, --remove-dirs    whether to remove empty directories (default: true)
   -V, --version         output the current version
   -h, --help            output usage information
@@ -55,7 +55,7 @@ const {cleanup} = require("ts-cleanup");
 
 cleanup('./src', "./dis", {
   root: __dirname, // default process.cwd()
-  keepJsFilesWithoutTS: true, // default false
+  removeAllJsFiles: true, // default false
   removeEmptyDirs: true, // default false
   verbose: true // default false
 });
@@ -91,7 +91,7 @@ Cleans previously transpiled typescript files in a source directory.
 - `options` 
     - `root?: string`: root directory
     - `exclude?: string | string[]`: pattern to exclude file matching
-    - `keepJsFilesWithoutTS?: boolean`: whether to keep .js files without a .ts file
+    - `removeAllJsFiles?: boolean`: whether to remove all .js
     - `removeEmptyDirs?: boolean`: whether to remove empty directories
     - `verbose?: boolean`: whether to show messages for files being deleted
 - `callback`: executes this callback for each file, and removes only files wich callback returns true. 
@@ -101,7 +101,7 @@ const {cleanSrc} = require("ts-cleanup");
 
 cleanSrc({
   root: __dirname, // default process.cwd()
-  keepJsFilesWithoutTS: true, // default false
+  removeAllJsFiles: true, // default false
   removeEmptyDirs: true, // default false
   verbose: true // default false
 },  (f)=> f.includes('.spec.ts'));
