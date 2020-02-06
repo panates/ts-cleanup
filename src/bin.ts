@@ -16,7 +16,7 @@ program
     .option('-v, --verbose', 'whether to show messages for files being deleted (disabled by default)')
     .option('-w, --watch', 'whether to watch for files being deleted (disabled by default)')
     .option('-a, --all', 'whether to remove all .js,.js.map,d.ts files without a .ts file')
-    .option('-rd, --remove-dirs', 'whether to remove empty directories', true)
+    .option('-d, --remove-dirs', 'whether to remove empty directories', true)
     .version(pkg.version, '-V, --version', 'output the current version')
     .parse(process.argv);
 
