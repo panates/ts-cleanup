@@ -38,7 +38,7 @@ function run() {
     }
 
     cleanup(opts.src, opts.dist, {
-        root: opts.src,
+        root,
         removeAllJsFiles: opts.all,
         removeEmptyDirs: opts.removeDirs,
         verbose: opts.verbose
