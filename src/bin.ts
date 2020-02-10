@@ -17,6 +17,7 @@ program
     .option('-w, --watch', 'whether to watch for files being deleted (disabled by default)')
     .option('-a, --all', 'whether to remove all .js,.js.map,d.ts files without a .ts file')
     .option('-d, --remove-dirs', 'whether to remove empty directories', true)
+    .option('-e, --exclude', 'sets excluded patterns')
     .version(pkg.version, '-V, --version', 'output the current version')
     .parse(process.argv);
 
@@ -41,7 +42,8 @@ function run() {
         root,
         removeAllJsFiles: opts.all,
         removeEmptyDirs: opts.removeDirs,
-        verbose: opts.verbose
+        verbose: opts.verbose,
+        exclude: opts.exclude
     });
 }
 
