@@ -58,6 +58,7 @@
     "clean": "tsc && npm run clean:test && npm run clean:src",
     "clean:src": "node ./dist/bin -s src -d dist -a",
     "clean:test": "node ./dist/bin -s test",
+    "preBuild": "npm run clean",
     "build": "npm run clean && npm run lint && tsc",
     "lint": "npm run lint:src && npm run lint:spec",
     "lint:src": "tslint -p tsconfig.json \"src/**/*.ts\" --fix",
