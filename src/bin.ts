@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import * as path from 'path';
-import * as program from 'commander';
+import {program} from 'commander';
 import * as colors from 'colors';
 import {cleanup, watch} from './index';
 
