@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-import * as path from 'path';
-import { program } from 'commander';
-import { cleanup, watch } from '../esm/index.js';
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { program } from 'commander';
+import * as path from 'path';
+/* eslint-disable-next-line import-x/no-unresolved */
+import { cleanup, watch } from '../esm/index.js';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 const pkgJson = JSON.parse(
@@ -50,8 +51,9 @@ function run() {
   const dist = opts.dist && path.resolve(root, opts.dist);
 
   if (opts.watch) {
-    if (src)
+    if (src) {
       return console.error('Your must provide source directory to watch');
+    }
     watch(src, dist || src, opts.verbose);
     return;
   }
