@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig-base.json",
+  "include": ["**/*.ts"],
+  "compilerOptions": {
+    "types": ["node", "jest"],
+    "noEmit": true,
+    "sourceMap": true,
+    "baseUrl": "..",
+    "paths": {
+      "ts-cleanup": ["./src"]
+    }
+  }
+}

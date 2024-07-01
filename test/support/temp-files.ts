@@ -1,13 +1,12 @@
-const fs = require('fs');
-const path = require('path');
-const temp = require('temp');
+import fs from 'node:fs';
+import path from 'node:path';
+import temp from 'temp';
 
 temp.track();
 
-function createTempTree(tree) {
-
-  const enumNode = (parent, tree) => {
-    for (const [k, v] of Object.entries(tree)) {
+export function createTempTree(tree: Record<string, any>) {
+  const enumNode = (parent: any, _tree: any) => {
+    for (const [k, v] of Object.entries(_tree)) {
       const relPath = path.join(parent, k);
       if (typeof v === 'object') {
         fs.mkdirSync(relPath);
@@ -21,5 +20,3 @@ function createTempTree(tree) {
   enumNode(tempDir, tree);
   return tempDir;
 }
-
-module.exports = {createTempTree};

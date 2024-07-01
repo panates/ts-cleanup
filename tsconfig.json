@@ -1,19 +1,8 @@
 {
+  "extends": "./tsconfig-base.json",
   "compilerOptions": {
-    "target": "es2017",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "rootDir": "src",
-    "outDir": "dist",
-    "strict": true,
-    "declaration": true,
-    "sourceMap": true,
-    "pretty": true
+    "types": ["node", "jest"]
   },
-  "include": [
-    "./src/**/*.ts"
-  ],
-  "exclude": [
-    "./**/*.spec.ts"
-  ]
+  "include": ["src", "test"],
+  "exclude": ["node_modules", "build"]
 }
