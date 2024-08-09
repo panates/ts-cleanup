@@ -1,6 +1,7 @@
-import { cleanMatch, cleanSrc } from 'ts-cleanup';
+/* eslint-disable no-console */
 import * as fg from 'fast-glob';
 import temp from 'temp';
+import { cleanMatch, cleanSrc } from 'ts-cleanup';
 import { createTempTree } from './support/temp-files.js';
 
 describe('ts-cleanup', () => {

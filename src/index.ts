@@ -1,8 +1,9 @@
-import path from 'path';
-import fs from 'fs';
-import fg from 'fast-glob';
+/* eslint-disable no-console */
 import chokidar from 'chokidar';
 import colors from 'colors';
+import fg from 'fast-glob';
+import fs from 'fs';
+import path from 'path';
 
 declare type CleanCallback = (filename: string) => boolean;
 
@@ -126,8 +127,9 @@ export function cleanSrc(options: ICleanSrcOptions, callback?: CleanCallback) {
       if (
         !options.removeAllJsFiles &&
         !(fs.existsSync(base + '.ts') || fs.existsSync(base + '.tsx'))
-      )
+      ) {
         return;
+      }
       removeFile(f);
     },
     options.exclude,
@@ -142,15 +144,17 @@ export function cleanSrc(options: ICleanSrcOptions, callback?: CleanCallback) {
       if (
         fs.existsSync(base + '.js') &&
         !(fs.existsSync(base + '.ts') || fs.existsSync(base + '.tsx'))
-      )
+      ) {
         return;
+      }
       removeFile(f);
     },
     options.exclude,
   );
 
-  if (options.removeEmptyDirs || options.removeEmptyDirs == null)
+  if (options.removeEmptyDirs || options.removeEmptyDirs == null) {
     _removeDir(root, verbose);
+  }
 }
 
 function _glob(
