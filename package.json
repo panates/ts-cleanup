@@ -45,7 +45,7 @@
     "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "tsc -b tsconfig-build-cjs.json",
     "build:esm": "tsc -b tsconfig-build-esm.json",
-    "postbuild": "npm run postbuild:copyfiles && node ./support/postbuild.cjs",
+    "postbuild": "npm run postbuild:copyfiles && cp -r ./bin ./build && node ./support/postbuild.cjs",
     "postbuild:copyfiles": "cp LICENSE README.md ./build",
     "lint": "eslint . --max-warnings=0",
     "lint:fix": "eslint . --max-warnings=0 --fix",
