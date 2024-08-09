@@ -1,7 +1,7 @@
 {
   "name": "ts-cleanup",
   "description": "A tool for cleaning up files built by typeScript",
-  "version": "0.3.2",
+  "version": "1.0.0",
   "author": "Panates <info@panates.com>",
   "license": "MIT",
   "private": true,
