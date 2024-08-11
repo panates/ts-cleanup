@@ -2,7 +2,7 @@
   "extends": ["./tsconfig-base.json", "@panates/tsconfig/build.json"],
   "compilerOptions": {
     "declaration": true,
-    "module": "NodeNext",
+    "module": "ES2020",
     "outDir": "build/esm",
     "declarationDir": "build/types"
   },
