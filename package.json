@@ -66,7 +66,7 @@
     "prepare": "husky"
   },
   "bin": {
-    "ts-cleanup": "src/bin/ts-cleanup.mjs"
+    "ts-cleanup": "./bin/ts-cleanup.mjs"
   },
   "files": [
     "src/bin/",
