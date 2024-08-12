@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { program } from 'commander';
 import * as path from 'path';
-/* eslint-disable-next-line import-x/no-unresolved */
+// noinspection JSFileReferences
 import { cleanup, watch } from '../esm/index.js';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
