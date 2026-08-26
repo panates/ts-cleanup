@@ -147,8 +147,7 @@ export function cleanSrc(options: ICleanSrcOptions, callback?: CleanCallback) {
       ) {
         return;
       }
-      console.log(`Removing file "${f}"`);
-      // removeFile(f);
+      removeFile(f);
     },
     options.exclude,
   );

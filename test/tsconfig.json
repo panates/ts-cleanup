@@ -5,7 +5,7 @@
     "types": ["node", "mocha"],
     "sourceMap": true,
     "paths": {
-      "valgen": ["../src/index.js"]
+      "ts-cleanup": ["../src/index.js"]
     }
   }
 }
