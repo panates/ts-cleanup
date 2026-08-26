@@ -1,5 +1,4 @@
-/* eslint-disable no-console */
-import chokidar from 'chokidar';
+import * as chokidar from 'chokidar';
 import colors from 'colors';
 import fg from 'fast-glob';
 import fs from 'fs';
@@ -141,13 +140,15 @@ export function cleanSrc(options: ICleanSrcOptions, callback?: CleanCallback) {
     f => {
       const ext = EXTENSIONS.find(x => f.endsWith(x)) as string;
       const base = f.substring(0, f.length - ext.length);
+      if (ext === '.d.ts' && !fs.existsSync(base + '.ts')) return;
       if (
         fs.existsSync(base + '.js') &&
         !(fs.existsSync(base + '.ts') || fs.existsSync(base + '.tsx'))
       ) {
         return;
       }
-      removeFile(f);
+      console.log(`Removing file "${f}"`);
+      // removeFile(f);
     },
     options.exclude,
   );

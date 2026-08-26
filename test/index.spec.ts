@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+import { expect } from 'expect';
 import * as fg from 'fast-glob';
 import temp from 'temp';
 import { cleanMatch, cleanSrc } from 'ts-cleanup';
