@@ -2,12 +2,10 @@
   "extends": "../tsconfig-base.json",
   "include": ["**/*.ts"],
   "compilerOptions": {
-    "types": ["node", "jest"],
-    "noEmit": true,
+    "types": ["node", "mocha"],
     "sourceMap": true,
-    "baseUrl": "..",
     "paths": {
-      "ts-cleanup": ["./src"]
+      "ts-cleanup": ["../src/index.js"]
     }
   }
 }

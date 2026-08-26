@@ -1,5 +1,5 @@
-/* eslint-disable no-console */
-import * as fg from 'fast-glob';
+import { expect } from 'expect';
+import glob from 'fast-glob';
 import temp from 'temp';
 import { cleanMatch, cleanSrc } from 'ts-cleanup';
 import { createTempTree } from './support/temp-files.js';
@@ -29,7 +29,7 @@ describe('ts-cleanup', () => {
           },
         },
       });
-      const files = fg.sync('**/*', { cwd: tempDir, onlyFiles: false });
+      const files = glob.sync('**/*', { cwd: tempDir, onlyFiles: false });
       expect(files).toEqual([
         'src',
         'src/index.js',
@@ -57,7 +57,7 @@ describe('ts-cleanup', () => {
         },
       });
       cleanSrc({ root: tempDir });
-      const files = fg.sync('**/*', { cwd: tempDir });
+      const files = glob.sync('**/*', { cwd: tempDir });
       expect(files).toEqual([
         'src/index.ts',
         'src/main.tsx',
@@ -81,7 +81,7 @@ describe('ts-cleanup', () => {
         },
       });
       cleanSrc({ root: tempDir, removeAllJsFiles: true });
-      const files = fg.sync('**/*', { cwd: tempDir });
+      const files = glob.sync('**/*', { cwd: tempDir });
       expect(files).toEqual(['src/index.ts', 'src/main.tsx', 'src/readme.md']);
     });
 
@@ -96,7 +96,7 @@ describe('ts-cleanup', () => {
         },
       });
       cleanSrc({ root: tempDir, exclude: '**/other.*' });
-      const files = fg.sync('**/*', { cwd: tempDir });
+      const files = glob.sync('**/*', { cwd: tempDir });
       expect(files).toEqual([
         'src/index.md',
         'src/index.ts',
@@ -116,7 +116,7 @@ describe('ts-cleanup', () => {
         },
       });
       cleanSrc({ root: tempDir }, (f: string) => !f.includes('other'));
-      const files = fg.sync('**/*', { cwd: tempDir });
+      const files = glob.sync('**/*', { cwd: tempDir });
       expect(files).toEqual([
         'src/index.md',
         'src/index.ts',
@@ -133,7 +133,7 @@ describe('ts-cleanup', () => {
         },
       });
       cleanSrc({ root: tempDir });
-      const files = fg.sync('**/*', { cwd: tempDir, onlyFiles: false });
+      const files = glob.sync('**/*', { cwd: tempDir, onlyFiles: false });
       expect(files).toEqual(['src', 'src/index.md']);
     });
 
@@ -166,7 +166,7 @@ describe('ts-cleanup', () => {
         },
       });
       cleanMatch('**/*.{js,ts}', { root: tempDir });
-      const files = fg.sync('**/*', { cwd: tempDir });
+      const files = glob.sync('**/*', { cwd: tempDir });
       expect(files).toEqual(['src/index.md']);
     });
 
@@ -179,7 +179,7 @@ describe('ts-cleanup', () => {
         },
       });
       cleanMatch(['**/*.js', '**/*.ts'], { root: tempDir });
-      const files = fg.sync('**/*', { cwd: tempDir });
+      const files = glob.sync('**/*', { cwd: tempDir });
       expect(files).toEqual(['src/index.md']);
     });
 
@@ -192,7 +192,7 @@ describe('ts-cleanup', () => {
         },
       });
       cleanMatch('**/*.*', { root: tempDir, exclude: '**/*.md' });
-      const files = fg.sync('**/*', { cwd: tempDir });
+      const files = glob.sync('**/*', { cwd: tempDir });
       expect(files).toEqual(['src/index.md']);
     });
 
@@ -205,7 +205,7 @@ describe('ts-cleanup', () => {
         },
       });
       cleanMatch('**/*.*', { root: tempDir, exclude: ['**/*.md', '**/*.js'] });
-      const files = fg.sync('**/*', { cwd: tempDir });
+      const files = glob.sync('**/*', { cwd: tempDir });
       expect(files).toEqual(['src/index.js', 'src/index.md']);
     });
 
@@ -224,7 +224,7 @@ describe('ts-cleanup', () => {
         { root: tempDir },
         (f: string) => !f.includes('other'),
       );
-      const files = fg.sync('**/*', { cwd: tempDir });
+      const files = glob.sync('**/*', { cwd: tempDir });
       expect(files).toEqual(['src/other.js', 'src/other.ts']);
     });
 
@@ -240,7 +240,7 @@ describe('ts-cleanup', () => {
         },
       });
       cleanMatch('**/*.{js,ts}', { root: tempDir, removeEmptyDirs: true });
-      const files = fg.sync('**/*', { cwd: tempDir, onlyFiles: false });
+      const files = glob.sync('**/*', { cwd: tempDir, onlyFiles: false });
       expect(files).toEqual(['src', 'src/index.md']);
     });
 

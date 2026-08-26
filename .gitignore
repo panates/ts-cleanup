@@ -1,14 +1,29 @@
-node_modules
-/build
-/examples/*/package-lock.json
+# secrets
+/.npmrc
+
+# compiled output
+/node_modules
+**/node_modules
+packages/*/dist
+packages/*/build
+packages-*/*/build
+/support/docker/data
+/reports
+/debug
+*.cache.json
+*.tsbuildinfo
+junit.xml
+*.log
+*audit.json
+graphify-out
 
 # environment variables
 .env
-.development.env
+.dev.env
+env-dev.ts
+.claude
 
 # Logs
-logs
-*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -20,7 +35,6 @@ lerna-debug.log*
 # Tests
 /coverage
 /.nyc_output
-/test.js
 
 # IDEs and editors
 /.idea
@@ -37,3 +51,6 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+*storybook.log
+storybook-static
