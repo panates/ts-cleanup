@@ -142,7 +142,7 @@ cleanMatch('src/**/*.spec.{js,js.map,d.ts}', {
 [npm-url]: https://npmjs.org/package/ts-cleanup
 [travis-image]: https://img.shields.io/travis/panates/ts-cleanup/master.svg
 [travis-url]: https://travis-ci.org/panates/ts-cleanup
-[coveralls-image]: https://img.shields.io/coveralls/panates/ts-cleanup/master.svg
+[coveralls-image]: https://img.shields.io/coveralls/panates/ts-cleanup/dev.svg
 [coveralls-url]: https://coveralls.io/r/panates/ts-cleanup
 [downloads-image]: https://img.shields.io/npm/dm/ts-cleanup.svg
 [downloads-url]: https://npmjs.org/package/ts-cleanup
